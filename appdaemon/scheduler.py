@@ -341,7 +341,8 @@ class Scheduler:
 
     def get_next_entries(self):
 
-        next_exec = datetime.datetime.now(pytz.utc).replace(year=3200)
+        next_exec = datetime.datetime.now(pytz.utc)
+        next_exec = next_exec.replace(year=next_exec.year + 3200)
         for name in self.schedule.keys():
             for entry in self.schedule[name].keys():
                 if self.schedule[name][entry]["timestamp"] < next_exec:
